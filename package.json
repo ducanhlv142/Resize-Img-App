@@ -1,0 +1,17 @@
+{
+  "name": "resize-img-app",
+  "productName": "Image Resizer",
+  "version": "1.0.0",
+  "description": "App to resize image dimensions",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "KolfLDA",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^37.2.6",
+    "resize-img": "^2.0.0",
+    "toastify-js": "^1.12.0"
+  }
+}
