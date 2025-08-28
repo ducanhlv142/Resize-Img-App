@@ -5,13 +5,65 @@
   "description": "App to resize image dimensions",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "dev": "cross-env NODE_ENV=development electronmon .",
+    "start": "electron .",
+    "dist": "electron-builder -w"
+  },
+  "build": {
+    "appId": "com.kolflda.resizeimgapp",
+    "productName": "Image Resizer",
+    "asar": true,
+    "files": [
+      "main.js",
+      "package.json",
+      "renderer/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "build/icon.icns",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "zip"
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    }
   },
   "author": "KolfLDA",
   "license": "ISC",
   "dependencies": {
-    "electron": "^37.2.6",
     "resize-img": "^2.0.0",
     "toastify-js": "^1.12.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12",
+    "electronmon": "^2.0.3"
   }
 }
